@@ -29,10 +29,9 @@ def follow(file):
                 if line:
                     ll = line.decode('utf-16', errors='ignore')
                     tmp_ll=ll.split(">")
-                    name = tmp_ll[0]
+                    name = tmp_ll[0].split(']')[1]
                     msg = tmp_ll[1]
-                    print(f"{name} --> msg:{msg}")
-                    print(f"-----翻译:{translate(msg)}")
+                    print(f"{name} --> {translate(msg)}")
                 # time.sleep(0.1)
         except KeyboardInterrupt as e:
             pass
@@ -82,7 +81,7 @@ def translate(content):
 if __name__ == '__main__':
     print(translate("This is a pen."))
     getPDList()
-    file = getFile("delve.imperium")
-    # file = getFile("新手帮助")
+    # file = getFile("delve.imperium")
+    file = getFile("新手帮助")
 
     follow(file)
